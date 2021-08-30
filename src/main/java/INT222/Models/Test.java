@@ -1,4 +1,4 @@
-package Models;
+package INT222.Models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,14 +13,11 @@ import javax.persistence.Table;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "productspectypes")
-public class ProductSpecType {
+@Table(name = "Test")
+public class Test {
 
     @Id
-    @Column(name = "specTypeId")
-    private long specTypeId;
-
-    @Column(name = "specTypeName")
-    private long specTypeName;
+    @Column(name = "test")
+    private String test;
 
 }

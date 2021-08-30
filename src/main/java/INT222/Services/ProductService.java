@@ -1,7 +1,8 @@
-package Services;
+package INT222.Services;
 
-import Models.Product;
-import Repositories.ProductRepository;
+import INT222.Models.Products;
+import INT222.Repositories.ProductRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    public List<Product> getProduct() {
+    public List<Products> getProduct() {
         return productRepository.findAll();
 
     }

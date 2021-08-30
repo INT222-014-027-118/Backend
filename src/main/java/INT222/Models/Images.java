@@ -1,4 +1,4 @@
-package Models;
+package INT222.Models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,16 +13,13 @@ import javax.persistence.Table;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "colors")
-public class Color {
+@Table(name = "Images")
+public class Images {
 
     @Id
-    @Column(name = "colorId")
-    private long colorId;
+    @Column(name = "imageId")
+    private long imageId;
 
-    @Column(name = "colorName")
-    private String colorName;
-
-    @Column(name = "colorHex")
-    private String colorHex;
+    @Column(name = "imageFileName")
+    private long imageFileName;
 }

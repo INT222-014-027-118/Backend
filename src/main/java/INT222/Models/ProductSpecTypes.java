@@ -1,4 +1,4 @@
-package Models;
+package INT222.Models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,13 +13,14 @@ import javax.persistence.Table;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "images")
-public class Image {
+@Table(name = "ProductSpecTypes")
+public class ProductSpecTypes {
 
     @Id
-    @Column(name = "imageId")
-    private long imageId;
+    @Column(name = "specTypeId")
+    private long specTypeId;
 
-    @Column(name = "imageFileName")
-    private long imageFileName;
+    @Column(name = "specTypeName")
+    private long specTypeName;
+
 }
