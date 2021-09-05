@@ -16,43 +16,35 @@ import java.util.List;
 public class Products {
 
     @Id
-    @Column(name = "productId",nullable = false, unique = true)
-    private long productId;
+    private long productid;
 
+    @Column
+    private String name;
 
-    @Column(name = "productName" ,nullable = false, unique = true)
-    private String productName;
-
-    @Column(name = "description")
+    @Column
     private String description;
 
-    @Column(name = "price")
+    @Column
     private double price;
 
+    @Column
+    private String categoryname;
 
-    @OneToMany
-    @JoinColumn(name = "imageId")
-    private List<Images> image = new ArrayList<>();
+    @Column
+    private String brandname;
 
-    @ManyToOne
-    @JoinColumn(name = "specTypeId")
-    private ProductSpecTypes productSpecType;
-
-
-    @Column(name = "categoryName")
-    private String categoryName;
-
-    @Column(name = "brandName")
-    private String brandName;
-
-    @Column(name = "typeName")
-    private String typeName;
+    @Column
+    private String typename;
 
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinTable(name = "Colors", joinColumns = @JoinColumn(name = "productId"), inverseJoinColumns = @JoinColumn(name = "colorId"))
+    @JoinTable(name = "productcolors", joinColumns = @JoinColumn(name = "productid"), inverseJoinColumns = @JoinColumn(name = "colorid"))
     private List<Colors> colors = new ArrayList<>();
 
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinTable(name = "ProductSpecTypes", joinColumns = @JoinColumn(name = "productId"), inverseJoinColumns = @JoinColumn(name = "specTypeId"))
-    private List<ProductSpecTypes>  productSpecTypes= new ArrayList<>();
+    @JoinTable(name = "productspecvalues", joinColumns = @JoinColumn(name = "productid"), inverseJoinColumns = @JoinColumn(name = "spectypeid"))
+    private List<ProductSpecTypes>  productspectypes = new ArrayList<>();
+
+//    @OneToMany
+//    @JoinColumn(name = "imageid")
+//    private List<Images> images = new ArrayList<>();
 }

@@ -2,10 +2,10 @@ package INT222.Controllers;
 
 
 import INT222.Models.Colors;
-import INT222.Models.Test;
+import INT222.Models.ProductSpecTypes;
 import INT222.Repositories.ColorRepository;
 
-import INT222.Repositories.TestRepo;
+import INT222.Repositories.ProductSpecTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,16 +22,19 @@ public class ColorController {
     private ColorRepository colorRepository;
 
     @Autowired
-    private TestRepo testRepo;
+    private ProductSpecTypeRepository productSpecTypeRepository;
 
     @GetMapping("/list")
     public List<Colors> getColor(){
         return colorRepository.findAll();
     }
 
-    @GetMapping("/test")
-    public List<Test> getTest(){
-        return testRepo.findAll();
+    @GetMapping("")
+    public List<ProductSpecTypes> getSpec(){
+        return productSpecTypeRepository.findAll();
     }
+
+
+
 
 }

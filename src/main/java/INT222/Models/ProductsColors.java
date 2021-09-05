@@ -13,11 +13,16 @@ import javax.persistence.Table;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Test")
-public class Test {
+@Table(name = "Productscolors")
+public class ProductsColors {
+
 
     @Id
-    @Column(name = "test")
-    private String test;
+    private long productid;
+
+
+    @Column
+    private long colorid;
+
 
 }

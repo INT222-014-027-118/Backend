@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Colors {
 
     @Id
-    private long id;
+    private long colorid;
 
     @Column
     private String name;

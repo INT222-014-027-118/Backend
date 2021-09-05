@@ -13,14 +13,13 @@ import javax.persistence.Table;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "ProductSpecTypes")
+@Table(name = "Productspectypes")
 public class ProductSpecTypes {
 
     @Id
-    @Column(name = "specTypeId")
-    private long specTypeId;
+    private long productspecid;
 
-    @Column(name = "specTypeName")
-    private long specTypeName;
+    @Column
+    private String name;
 
 }
