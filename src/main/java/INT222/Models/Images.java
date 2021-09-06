@@ -19,7 +19,11 @@ public class Images {
     @Column
     private String filename;
 
-    @ManyToOne
-    @JoinColumn(name = "productid")
-    private Products products;
+    @Column
+    private String imagefilename;
+
+//
+//    @ManyToOne
+//    @JoinColumn(name = "productid")
+//    private Products products;
 }

@@ -21,20 +21,9 @@ public class ColorController {
     @Autowired
     private ColorRepository colorRepository;
 
-    @Autowired
-    private ProductSpecTypeRepository productSpecTypeRepository;
-
     @GetMapping("/list")
     public List<Colors> getColor(){
         return colorRepository.findAll();
     }
-
-    @GetMapping("")
-    public List<ProductSpecTypes> getSpec(){
-        return productSpecTypeRepository.findAll();
-    }
-
-
-
 
 }

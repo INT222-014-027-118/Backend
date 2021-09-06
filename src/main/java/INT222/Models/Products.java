@@ -44,7 +44,7 @@ public class Products {
     @JoinTable(name = "productspecvalues", joinColumns = @JoinColumn(name = "productid"), inverseJoinColumns = @JoinColumn(name = "spectypeid"))
     private List<ProductSpecTypes>  productspectypes = new ArrayList<>();
 
-//    @OneToMany
-//    @JoinColumn(name = "imageid")
-//    private List<Images> images = new ArrayList<>();
+    @OneToMany
+    @JoinColumn(name = "imageid")
+    private List<Images> images = new ArrayList<>();
 }
