@@ -47,4 +47,8 @@ public class Products {
     @OneToMany
     @JoinColumn(name = "imageid")
     private List<Images> images = new ArrayList<>();
+
+    @OneToOne
+    @JoinColumn(name = "productid")
+    private ProductSpecValues productSpecValues;
 }

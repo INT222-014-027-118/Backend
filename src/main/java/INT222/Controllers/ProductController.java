@@ -2,19 +2,15 @@ package INT222.Controllers;
 
 
 import INT222.Exceptions.NotFoundException;
-import INT222.Exceptions.NotFoundNameException;
+
 import INT222.Exceptions.SameProductNameException;
 import INT222.Models.Products;
 import INT222.Repositories.ProductRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,37 +46,30 @@ public class ProductController {
 
     @PostMapping("/add")
     public void addProduct(@RequestBody Products products) {
-        Boolean b = false;
+
         for (int i = 0; i < productRepository.count(); i++) {
-            if (productRepository.findAll().get(i).getName().equals(products.getName()) || products.getProductid() <= 0) {
-                b = true;
+            if (productRepository.existsProductsByProductidAndName(products.getProductid(),products.getName())) {
+
                 throw new SameProductNameException(products.getName());
             }
-        }
-        if (b == false) {
+            else
             productRepository.save(products);
         }
 
     }
 
     @GetMapping("getByName/{name}")
-    public Products getProductByName(@PathVariable("name") String name) {
-        Products product = null;
-        for (int i = 0; i < this.productRepository.count(); i++) {
-            if (this.productRepository.findAll().get(i).getName().equals(name)) {
-                product = this.productRepository.findAll().get(i);
-            }
-        }
-        if (product == null) {
-            throw new NotFoundNameException(name);
-        }
-        return product;
+    public List<Products> getProductByName(@PathVariable("name") String name) {
+        return productRepository.findAllByNameContaining(name);
     }
 
 //        Edit Product
     @PutMapping("/update")
     public void editProduct(@RequestBody Products products) {
-        productRepository.save(products);
+        if (productRepository.existsProductsByProductidAndName(products.getProductid(), products.getName())) {
+            productRepository.save(products);
+        }
+        else throw new NotFoundException(products.getProductid());
 
     }
 
@@ -96,21 +85,21 @@ public class ProductController {
 //    }
 
 
-    @GetMapping("getByTypeName/{name}")
-    public List<Products> getProductByTypeName(@PathVariable("name") String name) {
-        return productRepository.findAllByTypenameContaining(name);
+    @GetMapping("getByTypeName/{typeName}")
+    public List<Products> getProductByTypeName(@PathVariable("typeName") String typeName){
+        return productRepository.findAllByTypenameContaining(typeName);
 
     }
 
-    @GetMapping("getByBrandName/{name}")
-    public List<Products> getProductByBrandName(@PathVariable("name") String name) {
-        return productRepository.findAllByBrandnameContaining(name);
+    @GetMapping("getByBrandName/{brandName}")
+    public List<Products> getProductByBrandName(@PathVariable("brandName") String brandName) {
+        return productRepository.findAllByBrandnameContaining(brandName);
 
     }
 
-    @GetMapping("getByCatergoryName/{name}")
-    public List<Products> getProductByCatergoryName(@PathVariable("name") String name) {
-        return productRepository.findAllByCategorynameContaining(name);
+    @GetMapping("getByCatergoryName/{Catergoryname}")
+    public List<Products> getProductByCatergoryName(@PathVariable("Catergoryname") String Catergoryname) {
+        return productRepository.findAllByCategorynameContaining(Catergoryname);
 
     }
 

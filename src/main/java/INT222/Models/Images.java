@@ -19,8 +19,7 @@ public class Images {
     @Column
     private String filename;
 
-    @Column
-    private String imagefilename;
+
 
 //
 //    @ManyToOne
