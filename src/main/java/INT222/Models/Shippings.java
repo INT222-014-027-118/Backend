@@ -13,15 +13,20 @@ import javax.persistence.Table;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Colors")
-public class Colors {
+@Table(name = "Shippings")
+public class Shippings {
 
     @Id
     private long id;
 
     @Column
-    private String label;
+    private String status;
 
-    @Column(name = "hex_code")
-    private String hexCode;
+    @Column(name = "company_shipping")
+    private String companyShipping;
+
+    @Column(name = "tracking_number ")
+    private String trackingNumber;
+
+
 }

@@ -10,20 +10,26 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+@Table(name = "Customers")
+public class Customers {
 
     @Id
     private String userName;
-    @Column
+    @Column(name = "firstname")
     private String userFirstName;
-    @Column
+    @Column(name = "lastname")
     private String userLastName;
     @Column
-    private String userPassword;
+    private String password;
+    @Column
+    private String email;
+    @Column
+    private int points;
 
-    @ManyToOne
-    @JoinColumn(name = "roleId")
-    private Role role;
+
+//    @ManyToOne
+//    @JoinColumn(name = "roleId")
+//    private Role role;
 
 
 }

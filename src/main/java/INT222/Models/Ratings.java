@@ -1,5 +1,6 @@
 package INT222.Models;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,15 +14,15 @@ import javax.persistence.Table;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Colors")
-public class Colors {
+@Table(name = "Reviews")
+public class Ratings {
 
     @Id
     private long id;
+    @Column
+    private String name;
 
     @Column
-    private String label;
+    private String description;
 
-    @Column(name = "hex_code")
-    private String hexCode;
 }
