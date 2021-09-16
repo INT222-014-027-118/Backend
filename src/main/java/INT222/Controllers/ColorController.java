@@ -1,11 +1,14 @@
 package INT222.Controllers;
 
 
+import INT222.Exceptions.NotFoundException;
 import INT222.Exceptions.SameProductNameException;
 import INT222.Models.Colors;
+import INT222.Models.OrderItems;
 import INT222.Models.Products;
 import INT222.Repositories.ColorRepository;
 
+import INT222.Repositories.OrderItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +21,9 @@ public class ColorController {
     @Autowired
     private ColorRepository colorRepository;
 
+    @Autowired
+    private OrderItemRepository orderItemRepository;
+
     @GetMapping("/list")
     public List<Colors> getColor(){
         return colorRepository.findAll();
@@ -27,7 +33,7 @@ public class ColorController {
     public void addProduct(@RequestBody Colors colors) {
 
 
-        if (colorRepository.existsColorsByHex_codeOrLabel(colors.getHex_code(),colors.getLabel())) {
+        if (colorRepository.existsColorsByHexCodeOrLabel(colors.getHexCode(),colors.getLabel())) {
 
             throw new SameProductNameException(colors.getLabel());
         }
@@ -37,4 +43,16 @@ public class ColorController {
 
     }
 
+    @DeleteMapping("/delete/{id}")
+    public void deleteProduct(@PathVariable long id) {
+        if (this.colorRepository.existsById(id)) {
+            this.colorRepository.deleteById(id);
+        } else
+            throw new NotFoundException(id);
+    }
+
+    @GetMapping("/test")
+    public List<OrderItems> getTest(){
+        return orderItemRepository.findAll();
+    }
 }

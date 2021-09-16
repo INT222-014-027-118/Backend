@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ColorRepository extends JpaRepository<Colors,Long> {
 
-    Boolean existsColorsByHex_codeOrLabel(String hex,String label);
+    Boolean existsColorsByHexCodeOrLabel(String hex,String label);
 }
