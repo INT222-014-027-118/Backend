@@ -9,19 +9,20 @@ import java.awt.print.Pageable;
 import java.util.List;
 
 @Repository
+
 public interface ProductRepository extends JpaRepository<Products,Long> {
 
 //    Page<Products> findAll(Pageable pageable);
 
-    List<Products> findAllByTypenameContaining(String name);
 
-    List<Products> findAllByBrandnameContaining(String name);
 
-    List<Products> findAllByCategorynameContaining(String name);
+   List<Products> findAllByBrandNameContaining(String name);
 
-    List<Products> findAllByNameContaining(String name);
+  List<Products> findAllByProductNameContaining(String name);
 
-    Boolean existsProductsByProductidAndName(long id,String name);
+  Boolean existsProductsByIdAndProductName(long id,String name);
+
+  Boolean existsProductsByBrandNameContaining(String name);
 
 
 

@@ -17,11 +17,11 @@ import javax.persistence.Table;
 public class Colors {
 
     @Id
-    private long colorid;
+    private long id;
 
     @Column
-    private String name;
+    private String label;
 
     @Column
-    private String hex;
+    private String hex_code;
 }

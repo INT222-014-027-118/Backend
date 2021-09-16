@@ -13,16 +13,17 @@ import javax.persistence.Table;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Products_has_colors")
-public class ProductsColors {
-
+@Table(name = "Discounts")
+public class Discounts {
 
     @Id
-    private long product_id;
-
-
+    private long id;
     @Column
-    private long color_id;
-
-
+    private String name;
+    @Column
+    private String description;
+    @Column
+    private float discount_percent;
+    @Column
+    private int active;
 }

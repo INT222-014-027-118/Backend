@@ -3,6 +3,7 @@ package INT222.Models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import javax.persistence.*;
 
@@ -10,24 +11,18 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Images")
-public class Images {
+@Table(name = "Categories")
+public class Categories {
 
     @Id
     private long id;
 
     @Column
-    private String source;
-
-    @Column
-    private String label;
+    private String category;
 
 
+    @Column(name = "parent_id",nullable = true)
+    private String parentId;
 
 
-
-//
-//    @ManyToOne
-//    @JoinColumn(name = "productid")
-//    private Products products;
 }
