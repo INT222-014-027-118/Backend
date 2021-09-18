@@ -6,6 +6,8 @@ import INT222.Exceptions.NotFoundException;
 import INT222.Exceptions.NotFoundNameException;
 import INT222.Exceptions.SameProductNameException;
 import INT222.Models.Products;
+import INT222.Models.ProductsHome;
+import INT222.Repositories.ProductHomeRepository;
 import INT222.Repositories.ProductRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +25,13 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private ProductHomeRepository productHomeRepository;
+
     //Get all Product
     @GetMapping("/list")
-    public List<Products> getProduct() {
-        return productRepository.findAll();
+    public List<ProductsHome> getProduct() {
+        return productHomeRepository.findAll();
     }
 
     @GetMapping("/{id}")

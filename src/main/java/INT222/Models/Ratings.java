@@ -5,16 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "Reviews")
+@Table(name = "Ratings")
 public class Ratings {
 
     @Id
@@ -22,7 +20,11 @@ public class Ratings {
     @Column
     private String name;
 
-    @Column
+    @Column(name = "description",nullable = true)
     private String description;
+
+//    @OneToMany
+//    @JoinColumn(name = "ratings_id")
+//    private List<RatingOfProduct> ratingOfProducts;
 
 }
